@@ -1,6 +1,8 @@
 # web自动化基本代码
 # 1.导入模块
 from time import sleep
+
+import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
@@ -84,3 +86,5 @@ def test_wsk():
     # 点击重置
     driver.find_element('name', 'toReset').click()
     sleep(3)
+
+

@@ -33,3 +33,4 @@ driver.forward()
 # 获取本页url
 a = driver.current_url
 print(a)
+b=driver.page_source
