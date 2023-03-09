@@ -11,7 +11,6 @@ option = webdriver.ChromeOptions()
 option.add_experimental_option('excludeSwitches', ['enable-logging'])
 web = webdriver.Chrome(options=option)
 
-
 # span点击
 web.find_element(By.XPATH, "//span[normalize-space()='x']").click()
 # 纯文本点击跳转
@@ -28,3 +27,5 @@ web.execute_script("window.scrollTo(0, 250)")
 web.find_element('name', 'business_no').send_keys(Keys.ENTER)
 # 键盘操作
 'https://www.jianshu.com/p/48c95a77bd45'
+# nginx+allure策略
+'https://www.cnblogs.com/xiongjianwen/p/17025269.html'

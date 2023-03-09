@@ -1,10 +1,13 @@
 # web自动化基本代码
 # 1.导入模块
+
+
 import allure, pytest
 from time import sleep
 from selenium import webdriver
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
+import os
 
 # 2.实例化浏览器对象：类名（） 用一个函数接收
 option = webdriver.ChromeOptions()
@@ -231,7 +234,7 @@ def test_tk():
         web.find_element('name', 'toAdd').click()
         sleep(2)
     with allure.step('选择退款方式'):
-        web.find_element('name','refund_mode').click()
+        web.find_element('name', 'refund_mode').click()
         sleep(3)
     with allure.step('选择华胄建设银行'):
         web.find_element('name', 'refund_mode_3').click()
@@ -251,3 +254,6 @@ def test_tk():
     sleep(3)
     allure.attach(web.get_screenshot_as_png(), '截图退款', allure.attachment_type.PNG)
     sleep(2)
+
+
+
