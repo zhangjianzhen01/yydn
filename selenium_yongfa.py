@@ -29,3 +29,7 @@ web.find_element('name', 'business_no').send_keys(Keys.ENTER)
 'https://www.jianshu.com/p/48c95a77bd45'
 # nginx+allure策略
 'https://www.cnblogs.com/xiongjianwen/p/17025269.html'
+#生成报告命令
+'pytest .\demo.py -s -q --alluredir=./result'
+'allure generate .\result\ -o .\BG  --clean'
+
