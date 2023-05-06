@@ -160,7 +160,7 @@ def test_rqsx():
         allure.attach(web.get_screenshot_as_png(), '选择时间', allure.attachment_type.PNG)
     with allure.step('点击搜索'):
         sleep(2)
-        web.find_element('name', 'lls_99').click()
+        web.find_elements(By.XPATH, "//span[normalize-space()='搜索']")[1].click()
         sleep(2)
         web.execute_script("window.scrollTo(0, 300)")
         sleep(2)
@@ -171,7 +171,7 @@ def test_rqsx():
         web.find_element(By.XPATH, "//span[normalize-space()='开票日期']").click()
         sleep(2)
     with allure.step('点击搜索'):
-        web.find_element('name', 'lls_99').click()
+        web.find_elements(By.XPATH, "//span[normalize-space()='搜索']")[1].click()
         sleep(2)
         allure.attach(web.get_screenshot_as_png(), '开票搜索结果', allure.attachment_type.PNG)
     with allure.step('点击订单日期'):
@@ -179,7 +179,7 @@ def test_rqsx():
         web.find_element(By.XPATH, "//span[normalize-space()='订单日期']").click()
         sleep(2)
     with allure.step('点击搜索'):
-        web.find_element('name', 'lls_99').click()
+        web.find_elements(By.XPATH, "//span[normalize-space()='搜索']")[1].click()
         sleep(2)
         allure.attach(web.get_screenshot_as_png(), '订单日期搜索结果', allure.attachment_type.PNG)
     with allure.step('点击预计交货日期'):
@@ -187,7 +187,7 @@ def test_rqsx():
         web.find_element(By.XPATH, "//span[normalize-space()='预计交货日期']").click()
         sleep(2)
     with allure.step('点击搜索'):
-        web.find_element('name', 'lls_99').click()
+        web.find_elements(By.XPATH, "//span[normalize-space()='搜索']")[1].click()
         sleep(2)
         allure.attach(web.get_screenshot_as_png(), '预计交货日期搜索结果', allure.attachment_type.PNG)
         sleep(2)
