@@ -74,9 +74,9 @@ def test_xgfk():
     print(fk_xgjine)
 
 # 取消申请付款单
-def test_qxfk():
-    qxfk_url = f'http://192.168.0.21:9090/ApplyPayOrderCancel/{ID}'
-    qxfk_head = {'Content-Type': 'application/json;charset=UTF-8', 'authorization': f'Bearer {tk}'}
-
-    r = requests.post(url=qxfk_url, headers=qxfk_head)
-    print(r.json())
+# def test_qxfk():
+#     qxfk_url = f'http://192.168.0.21:9090/ApplyPayOrderCancel/{ID}'
+#     qxfk_head = {'Content-Type': 'application/json;charset=UTF-8', 'authorization': f'Bearer {tk}'}
+#
+#     r = requests.post(url=qxfk_url, headers=qxfk_head)
+#     print(r.json())

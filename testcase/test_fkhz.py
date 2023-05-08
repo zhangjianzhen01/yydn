@@ -1,9 +1,10 @@
 import requests, random, datetime
 from business import denglu
-from testcase import test_sqfk
 
 tk = denglu.test_dlxt()
 
+# 设置付款时间
+fksj = datetime.date.today()
 # 查询申请中付款单ID
 ID = []
 
@@ -36,30 +37,54 @@ def test_tyfk():
 
 
 # 查询付款方式及付款金额
-fkfs = 3
+fkfs = []
 fkjine = []
 
 
-def test_cxxqx():
+def test_cxxq():
     global fkfs, fkjine
-    cxxqx_url = f'http://192.168.0.21:9090/ApplyPayOrder/127'
-    cxxqx_head = {'Content-Type': 'application/json;charset=UTF-8', 'authorization': f'Bearer {tk}'}
-    r = requests.get(url=cxxqx_url, headers=cxxqx_head)
+    cxxq_url = f'http://192.168.0.21:9090/ApplyPayOrder/{ID}'
+    cxxq_head = {'Content-Type': 'application/json;charset=UTF-8', 'authorization': f'Bearer {tk}'}
+    r = requests.get(url=cxxq_url, headers=cxxq_head)
     fkfs = r.json()['data']['pay_type']
     fkjine = r.json()['data']['apply_amount']
-    print(fkjine, fkfs)
+    print(fkjine, fkfs,fksj)
 
 
 # 财务付款
 def test_fk():
+    global fkfs, fkjine
+    # 票据
     if fkfs == 3:
-        url = f'http://192.168.0.21:9090/ApplyPayOrderDo/128'
+        url = f'http://192.168.0.21:9090/ApplyPayOrderDo/{ID}'
         head = {'Content-Type': 'application/json;charset=UTF-8', 'authorization': f'Bearer {tk}'}
         data = {"before_amount": 0, "discount_amount": "", "is_discount": "0", "pay_type": "3", "bill_type": "1",
                 "pay_company_name": "上海华胄网络科技有限公司", "pay_bank_name": "上海银行曹安支行",
                 "pay_bank_no": "00070671090", "bill": [
-                {"start_day": "", "end_day": "", "bill_day": "2023-05-06", "bill_no": "2233232", "bill_amount": '33',
+                {"start_day": "", "end_day": "", "bill_day": f"{fksj}", "bill_no": "2233232", "bill_amount": fkjine,
                  "bill_url": "http://hzdefault-1304855126.cos.ap-nanjing.myqcloud.com/financial/1683368200000.png"}]}
+        r = requests.post(url=url, headers=head, json=data)
+        print(r.json())
+
+    # 转账
+    elif fkfs == 1:
+        url = f'http://192.168.0.21:9090/ApplyPayOrderDo/{ID}'
+        head = {'Content-Type': 'application/json;charset=UTF-8', 'authorization': f'Bearer {tk}'}
+        data = {"before_amount": 0, "discount_amount": 0, "is_discount": "0", "pay_amount": fkjine, "pay_type": "1",
+                "pay_company_name": "上海华胄网络科技有限公司", "pay_bank_name": "上海银行曹安支行",
+                "pay_bank_no": "00070671090", "pay_day": f"{fksj}", "VoucherUrl": [{"name": "png格式.png",
+                                                                                       "url": "http://hzdefault-1304855126.cos.ap-nanjing.myqcloud.com/financial/1683509134000.png"}]}
+        r = requests.post(url=url, headers=head, json=data)
+        print(r.json())
+
+    # 现金
+    elif fkfs == 2:
+        url = f'http://192.168.0.21:9090/ApplyPayOrderDo/{ID}'
+        head = {'Content-Type': 'application/json;charset=UTF-8', 'authorization': f'Bearer {tk}'}
+        data = {"before_amount": 0, "discount_amount": 0, "is_discount": "0", "pay_amount": fkjine, "pay_type": "2",
+                "pay_day": f"{fksj}"}
+        r = requests.post(url=url, headers=head, json=data)
+        print(r.json())
 
     else:
-        print('错误啦')
+        print('出错啦')
