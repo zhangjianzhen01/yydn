@@ -52,7 +52,7 @@ def test_sqfk():
 ID = []
 
 
-def test_cxdsh():
+def test_cxsqz():
     global ID
     cx_url = 'http://192.168.0.21:9090/ApplyPayOrder?page=1&limit=10&collect_customer=&apply_no=&status=0&is_pay=&invoice_status=&warehousing_status=&down_time_type=&purchase_order_code=&voucher_abstract='
     cx_head = {'Content-Type': 'application/json;charset=UTF-8', 'authorization': f'Bearer {tk}'}
@@ -74,9 +74,9 @@ def test_xgfk():
     print(fk_xgjine)
 
 # 取消申请付款单
-# def test_qxfk():
-#     qxfk_url = f'http://192.168.0.21:9090/ApplyPayOrderCancel/{ID}'
-#     qxfk_head = {'Content-Type': 'application/json;charset=UTF-8', 'authorization': f'Bearer {tk}'}
-#
-#     r = requests.post(url=qxfk_url, headers=qxfk_head)
-#     print(r.json())
+def test_qxfk():
+    qxfk_url = f'http://192.168.0.21:9090/ApplyPayOrderCancel/{ID}'
+    qxfk_head = {'Content-Type': 'application/json;charset=UTF-8', 'authorization': f'Bearer {tk}'}
+
+    r = requests.post(url=qxfk_url, headers=qxfk_head)
+    print(r.json())
