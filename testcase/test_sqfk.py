@@ -4,7 +4,7 @@ from business import denglu
 tk = denglu.test_dlxt()
 
 # 设置采购订单号变量
-cgddh = '34357424'
+cgddh = '"34357424"'
 # 随机付款方式
 fkfs_list = [1, 2, 3]
 fk_fs = random.choice(fkfs_list)

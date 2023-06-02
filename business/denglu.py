@@ -4,9 +4,9 @@ from business import logger
 
 # 登录系统
 def test_dlxt():
-    url = 'http://192.168.0.217:9901/login'
+    url = 'http://192.168.0.21:9090/login'
     head = {'Content-Type': 'application/json;charset=UTF-8'}
-    data = {"username": "admin", "password": "huazhou333"}
+    data = {"username": "admin", "password": "huazhou666"}
     r = requests.post(url=url, headers=head, json=data)
     req=r.json()
     print(req)
