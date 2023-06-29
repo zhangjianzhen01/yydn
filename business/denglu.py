@@ -6,7 +6,7 @@ from business import logger
 def test_dlxt():
     url = 'http://192.168.0.21:9090/login'
     head = {'Content-Type': 'application/json;charset=UTF-8'}
-    data = {"username": "admin", "password": "huazhou666"}
+    data = {"username": "zhangjz", "password": "cccc6666"}
     r = requests.post(url=url, headers=head, json=data)
     req=r.json()
     print(req)
